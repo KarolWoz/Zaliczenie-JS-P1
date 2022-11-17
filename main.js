@@ -61,7 +61,7 @@ const addExpense = (event) => {
   const newExpense = {
     title: expenseTitle.value,
     amount: expenseValue.value,
-    id: Math.random,
+    id: Math.random(),
   };
   expenses.push(newExpense);
   renderExpenseList();
@@ -84,13 +84,13 @@ const renderExpenseList = () => {
     amount.innerText = element.amount;
     const editBtn = document.createElement("button");
     editBtn.innerText = "Edit";
-    // editBtn.addEventListener("click", () => {
-    //   text.setAttribute("contenteditable", "true");
-    //   amount.setAttribute("contenteditable", "true");
-    //   const saveBtn = document.createElement("button");
-    //   saveBtn.innerText = "Save";
-    //   saveBtn
-    // });
+    editBtn.addEventListener("click", () => {
+      text.setAttribute("contenteditable", "true");
+      amount.setAttribute("contenteditable", "true");
+      const saveBtn = document.createElement("button");
+      saveBtn.innerText = "Save";
+      saveBtn;
+    });
     expenseList.appendChild(li);
     li.appendChild(text);
     li.appendChild(amount);
