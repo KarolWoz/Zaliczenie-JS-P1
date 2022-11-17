@@ -134,7 +134,7 @@ const budgetText = (incomeSum, expenseSum, difference) => {
   </p>`;
   } else if (incomeSum < expenseSum) {
     budgetState.innerHTML = `<p class="text--center">
-    You are udter the budget <span id="budgetValue">${difference}</span> PLN
+    You are under the budget <span id="budgetValue">${difference}</span> PLN
   </p>`;
   } else if (difference === 0) {
     budgetState.innerHTML = `<p class="text--center">
