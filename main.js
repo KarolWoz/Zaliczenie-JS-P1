@@ -38,19 +38,41 @@ const renderIncomeList = () => {
   incomeList.innerHTML = "";
   incomes.forEach((element) => {
     const li = document.createElement("li");
+    li.id = element.id;
     li.classList = "flex flex--space-between budget__list__item";
     const text = document.createElement("p");
     text.innerText = element.title;
     const amount = document.createElement("span");
     amount.innerText = element.amount;
+    const editBtn = document.createElement("button");
+    editBtn.innerText = "Edit";
+    const saveBtn = document.createElement("button");
+    saveBtn.innerText = "Save";
+    editBtn.addEventListener("click", () => {
+      text.setAttribute("contenteditable", "true");
+      amount.setAttribute("contenteditable", "true");
+      li.removeChild(editBtn);
+      li.appendChild(saveBtn);
+    });
+
+    saveBtn.addEventListener("click", () => {
+      incomes.map((item) => {
+        if (item.id === element.id) {
+          item.amount = Number(amount.textContent);
+          item.title = text.textContent;
+        }
+      });
+      renderIncomeList();
+    });
     li.appendChild(text);
     li.appendChild(amount);
+    li.appendChild(editBtn);
+
     incomeList.appendChild(li);
     incomeValue.value = "";
     incomeTitle.value = "";
   });
-  // updateIncomeSum();
-  // budgetCalc();
+
   calculateSum();
 };
 
@@ -77,6 +99,7 @@ const renderExpenseList = () => {
   expenseList.innerHTML = "";
   expenses.forEach((element) => {
     const li = document.createElement("li");
+    li.id = element.id;
     li.classList = "flex flex--space-between budget__list__item";
     const text = document.createElement("p");
     text.innerText = element.title;
@@ -84,24 +107,47 @@ const renderExpenseList = () => {
     amount.innerText = element.amount;
     const editBtn = document.createElement("button");
     editBtn.innerText = "Edit";
+    const deleteBtn = document.createElement("button");
+    deleteBtn.innerText = "Delete";
+    const saveBtn = document.createElement("button");
+    saveBtn.innerText = "Save";
+
     editBtn.addEventListener("click", () => {
       text.setAttribute("contenteditable", "true");
       amount.setAttribute("contenteditable", "true");
-      const saveBtn = document.createElement("button");
-      saveBtn.innerText = "Save";
-      saveBtn;
+      li.removeChild(editBtn);
+      li.appendChild(saveBtn);
+    });
+    deleteBtn.addEventListener("click", () => {
+      expenseList.removeChild(li);
+      console.log(expenses);
+      // expenses.filter((item) => {
+      //   item.id === element.id {
+      //     item.amount = Number(amount.textContent);
+      //     item.title = text.textContent;
+      //   }
+      // });
+      // renderExpenseList();
+    });
+
+    saveBtn.addEventListener("click", () => {
+      expenses.map((item) => {
+        if (item.id === element.id) {
+          item.amount = Number(amount.textContent);
+          item.title = text.textContent;
+        }
+      });
+      renderExpenseList();
     });
     expenseList.appendChild(li);
     li.appendChild(text);
     li.appendChild(amount);
     li.appendChild(editBtn);
-    // li.appendChild(saveBtn);
+    li.appendChild(deleteBtn);
     expenseValue.value = "";
     expenseTitle.value = "";
   });
 
-  // updateExpenseSum();
-  // budgetCalc();
   calculateSum();
 };
 
