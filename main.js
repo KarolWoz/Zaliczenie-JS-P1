@@ -46,13 +46,36 @@ const renderIncomeList = () => {
     amount.innerText = element.amount;
     const editBtn = document.createElement("button");
     editBtn.innerText = "Edit";
+    editBtn.classList.add(
+      "budget__list__item__button",
+      "budget__list__item__button--edit"
+    );
+    const deleteBtn = document.createElement("button");
+    deleteBtn.innerText = "Delete";
+    deleteBtn.classList.add(
+      "budget__list__item__button",
+      "budget__list__item__button--delete"
+    );
     const saveBtn = document.createElement("button");
     saveBtn.innerText = "Save";
+    saveBtn.classList.add(
+      "budget__list__item__button",
+      "budget__list__item__button--save"
+    );
+
     editBtn.addEventListener("click", () => {
       text.setAttribute("contenteditable", "true");
       amount.setAttribute("contenteditable", "true");
       li.removeChild(editBtn);
       li.appendChild(saveBtn);
+    });
+    deleteBtn.addEventListener("click", () => {
+      const indexToRemove1 = incomes.findIndex(
+        (item) => item.id === element.id
+      );
+      incomes.splice(indexToRemove1, 1);
+
+      renderIncomeList();
     });
 
     saveBtn.addEventListener("click", () => {
@@ -67,6 +90,7 @@ const renderIncomeList = () => {
     li.appendChild(text);
     li.appendChild(amount);
     li.appendChild(editBtn);
+    li.appendChild(deleteBtn);
 
     incomeList.appendChild(li);
     incomeValue.value = "";
@@ -89,10 +113,6 @@ const addExpense = (event) => {
   renderExpenseList();
 };
 
-// const edit = () => {
-//   text.setAttribute("contenteditable", "true");
-//   amount.setAttribute("conteneditable", "true");
-// };
 expenseForm.addEventListener("submit", addExpense);
 
 const renderExpenseList = () => {
@@ -107,10 +127,22 @@ const renderExpenseList = () => {
     amount.innerText = element.amount;
     const editBtn = document.createElement("button");
     editBtn.innerText = "Edit";
+    editBtn.classList.add(
+      "budget__list__item__button",
+      "budget__list__item__button--edit"
+    );
     const deleteBtn = document.createElement("button");
     deleteBtn.innerText = "Delete";
+    deleteBtn.classList.add(
+      "budget__list__item__button",
+      "budget__list__item__button--delete"
+    );
     const saveBtn = document.createElement("button");
     saveBtn.innerText = "Save";
+    saveBtn.classList.add(
+      "budget__list__item__button",
+      "budget__list__item__button--save"
+    );
 
     editBtn.addEventListener("click", () => {
       text.setAttribute("contenteditable", "true");
@@ -119,15 +151,12 @@ const renderExpenseList = () => {
       li.appendChild(saveBtn);
     });
     deleteBtn.addEventListener("click", () => {
-      expenseList.removeChild(li);
-      console.log(expenses);
-      // expenses.filter((item) => {
-      //   item.id === element.id {
-      //     item.amount = Number(amount.textContent);
-      //     item.title = text.textContent;
-      //   }
-      // });
-      // renderExpenseList();
+      const indexToRemove = expenses.findIndex(
+        (item) => item.id === element.id
+      );
+      expenses.splice(indexToRemove, 1);
+
+      renderExpenseList();
     });
 
     saveBtn.addEventListener("click", () => {

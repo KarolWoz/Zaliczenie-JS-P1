@@ -65,16 +65,6 @@ h2 {
   color: var(--success);
 }
 
-/* This class can be used when the budget value is 0 
-.budget__state--warning{
-    color: var(--warning)
-} */
-
-/* This class can be used when the budget value is below 0
-.budget__state--danger{
-    color: var(--danger)
-} */
-
 .budget__list__wrapper {
   margin: 30px 0;
   flex-direction: column;
@@ -149,36 +139,31 @@ h2 {
   }
 }
 
-/* A SAMPLE STYLING OF BUDGET LIST ITEM
-.budget__list__item{
-    flex-direction: column;
-    padding: 2px 0;
-    border: 1px solid var(--white);
-    background-color: var(--biscuit);
+.budget__list__item__button {
+  padding: 3px 15px;
+  margin: 2px;
+  border: none;
+  color: var(--white);
+  font-size: var(--font-s);
+  font-weight: 700;
+  line-height: 18px;
 }
-.budget__list__item__button{
-    padding: 3px 15px;
-    margin: 2px;
-    border: none;
-    color: var(--white);
-    font-size: var(--font-s);
-    font-weight: 700;
-    line-height: 18px;
+.budget__list__item__button--edit {
+  background-color: var(--edit);
 }
-.budget__list__item__button--edit{
-    background-color: var(--edit);
+.budget__list__item__button--delete {
+  background-color: var(--danger);
 }
-.budget__list__item__button--delete{
-    background-color: var(--danger);
+.budget__list__item__button--save {
+  background-color: var(--success);
 }
-@media screen and (min-width: 1024px){
-    .budget__list__item{
-        flex-direction: row;
-        align-items: center;
-    }
-} */
-
-footer {
+@media screen and (min-width: 1024px) {
+  .budget__list__item {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+*/ footer {
   display: flex;
   align-items: center;
   justify-content: center;
