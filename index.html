@@ -38,6 +38,7 @@
               type="number"
               id="incomeValue"
               class="budget__list__form__input budget__list__form__input--number"
+              min="0"
             />
             <input
               type="submit"
@@ -62,6 +63,7 @@
               type="number"
               id="expenseValue"
               class="budget__list__form__input budget__list__form__input--number"
+              min="0"
             />
             <input
               type="submit"
@@ -84,7 +86,14 @@
         >Accounting icons created by Eucalyp - Flaticon</a
       >
     </footer>
-
+    <div class="modal" id="modal">
+      <div class="modalBox">
+        <button id="modalBtn" class="modalBtn">Ok, rozumiem</button>
+        <p class="modalWarning">
+          Musisz wprowazić liczbę, która większa od zera :D
+        </p>
+      </div>
+    </div>
     <script src="main.js"></script>
   </body>
 </html>

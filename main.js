@@ -13,6 +13,10 @@ const expenseForm = document.querySelector("#expenseForm");
 const expenseList = document.querySelector("#expensesList");
 const expenseAcc = document.querySelector("#expensesValue");
 
+const modal = document.querySelector("#modal");
+const modalBtn = document.querySelector("#modalBtn");
+const modalBox = document.querySelector("#modalBox");
+
 const budgetValue = document.querySelector("#budgetValue");
 const budgetState = document.querySelector("#budgetState");
 
@@ -79,13 +83,23 @@ const renderIncomeList = () => {
     });
 
     saveBtn.addEventListener("click", () => {
-      incomes.map((item) => {
-        if (item.id === element.id) {
-          item.amount = Number(amount.textContent);
-          item.title = text.textContent;
-        }
-      });
-      renderIncomeList();
+      if (
+        typeof Number(amount.textContent) === "number" &&
+        Number(amount.textContent) > 0
+      ) {
+        incomes.map((item) => {
+          if (item.id === element.id) {
+            item.amount = Number(amount.textContent);
+            item.title = text.textContent;
+          }
+        });
+        renderIncomeList();
+      } else {
+        modal.style.display = "flex";
+        modalBtn.addEventListener("click", () => {
+          modal.style.display = "none";
+        });
+      }
     });
     li.appendChild(text);
     li.appendChild(amount);
@@ -160,13 +174,23 @@ const renderExpenseList = () => {
     });
 
     saveBtn.addEventListener("click", () => {
-      expenses.map((item) => {
-        if (item.id === element.id) {
-          item.amount = Number(amount.textContent);
-          item.title = text.textContent;
-        }
-      });
-      renderExpenseList();
+      if (
+        typeof Number(amount.textContent) === "number" &&
+        Number(amount.textContent) > 0
+      ) {
+        expenses.map((item) => {
+          if (item.id === element.id) {
+            item.amount = Number(amount.textContent);
+            item.title = text.textContent;
+          }
+        });
+        renderExpenseList();
+      } else {
+        modal.style.display = "flex";
+        modalBtn.addEventListener("click", () => {
+          modal.style.display = "none";
+        });
+      }
     });
     expenseList.appendChild(li);
     li.appendChild(text);
