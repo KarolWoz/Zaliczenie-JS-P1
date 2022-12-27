@@ -97,6 +97,7 @@ h2 {
   font-size: var(--font-sm);
   line-height: 24px;
   border: none;
+  border: 0.5px solid black;
 }
 
 .budget__list__form__input--text {
@@ -137,6 +138,11 @@ h2 {
   .budget__expenses {
     margin-top: 0;
   }
+
+  .budget__list__item {
+    flex-direction: row;
+    align-items: center;
+  }
 }
 
 .budget__list__item__button {
@@ -157,13 +163,8 @@ h2 {
 .budget__list__item__button--save {
   background-color: var(--success);
 }
-@media screen and (min-width: 1024px) {
-  .budget__list__item {
-    flex-direction: row;
-    align-items: center;
-  }
-}
-*/ footer {
+
+footer {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -203,11 +204,11 @@ h2 {
   border: solid 1px rgba(20, 33, 150, 0.76);
   border-radius: 180px;
   font-weight: bolder;
-  font-size: 15px;
+  font-size: var(--font-s);
 }
 .modalWarning {
   margin-top: 70px;
-  font-size: 20px;
+  font-size: var(--font-m);
   text-align: center;
   color: rgb(138, 8, 8);
   font-weight: bolder;

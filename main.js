@@ -1,11 +1,8 @@
-// Przychody
-
 const incomeTitle = document.querySelector("#incomeTitle");
 const incomeValue = document.querySelector("#incomeValue");
 const incomeForm = document.querySelector("#incomeForm");
 const incomeList = document.querySelector("#incomesList");
 const incomeAcc = document.querySelector("#incomesValue");
-// Wydatki
 
 const expenseTitle = document.querySelector("#expenseTitle");
 const expenseValue = document.querySelector("#expenseValue");
@@ -15,7 +12,6 @@ const expenseAcc = document.querySelector("#expensesValue");
 
 const modal = document.querySelector("#modal");
 const modalBtn = document.querySelector("#modalBtn");
-const modalBox = document.querySelector("#modalBox");
 
 const budgetValue = document.querySelector("#budgetValue");
 const budgetState = document.querySelector("#budgetState");
@@ -134,9 +130,10 @@ const renderExpenseList = () => {
   expenses.forEach((element) => {
     const li = document.createElement("li");
     li.id = element.id;
-    li.classList = "flex flex--space-between budget__list__item";
+    li.classList = "flex flex--space-between budget__list__item ";
     const text = document.createElement("p");
     text.innerText = element.title;
+    text.style.border = "1px solid black";
     const amount = document.createElement("span");
     amount.innerText = element.amount;
     const editBtn = document.createElement("button");
